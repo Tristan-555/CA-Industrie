@@ -1,0 +1,35 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.carte-produit {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.carte-produit img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#panier {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold; /* optionnel pour rendre le texte plus visible */
+}

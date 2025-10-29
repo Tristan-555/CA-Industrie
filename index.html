@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Commandez vos objets fait à l'imprimante 3D pour vos maquettes IRL à l'échelle que vous souhaitez!">
+  <title>CA industrie</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Bienvenu sur le site des fockoffeur </h1>
+  <p>Ceci est ma première fockoferisseuse</p>
+  
+  <!-- liste des articles -->
+
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200" alt="Produit" />
+    <h2>T-shirt Cool</h2>
+    <p>Prix à l'unité: 19,99 €</p>
+    <button class="retirer" data-price="-19.99" data-name="T-shirt Cool">retirer du panier</button>
+    <h2><span id="compteur_Tshirt_Cool">0</span></h2>
+    <button class="ajouter" data-price="19.99" data-name="T-shirt Cool">Ajouter au panier</button>
+  </div>
+  
+  <div class="carte-produit">
+    <img src="image/chaussette de fockoffeur.png" alt="Produit" />
+    <h2>chausette de fockoffeur</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="chaussette de fockoffeur">retirer du panier</button>
+    <h2><span id="compteur_chaussettedufoh">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="chausette de fockoffeur">Ajouter au panier</button>
+  </div>
+
+  <div class="carte-produit">
+    <img src="https://www.google.com/search?client=firefox-b-d&sca_esv=e7bf22627bcd1c5c&udm=2&fbs=AIIjpHx4nJjfGojPVHhEACUHPiMQ_pbg5bWizQs3A_kIenjtci1AK0oIkDPIMLSzNdfCsSclmZEP4j6kAYu1FQWKMEbBeN7MxydlFm9ol4lu9eKt1vixqq5Ohu4rPBpYRS0Oy-SrCbJUNWBXFN23isWJspcbF1VkWbSI3HFWJBguCqvjbK4AvCLBgg70Roie-GmEmG7lF_gpumIxZq4_dOi7I-vSWYAwdw&q=casquette&sa=X&ved=2ahUKEwi08tTFn8yPAxVCVUEAHRN0Hr8QtKgLegQIFxAB&biw=1536&bih=703&dpr=1.25#vhid=sKVK36Va9aKrgM&vssid=mosaic" alt="Produit" />
+    <h2>casquette</h2>
+    <p>Prix à l'unité: 15,00 €</p>
+    <button class="retirer" data-price="-15.00" data-name="casquette">retirer du panier</button>
+    <h2><span id="compteur_casquette">0</span></h2>
+    <button class="ajouter" data-price="15.00" data-name="casquette">Ajouter au panier</button>
+  </div>
+
+<!-- lien pour accéder au panier -->
+
+ <p id="panier">
+  <a id="lien-panier" href="panier.html">Panier :<span id="Ctotalart"> 0 </span> article</a>
+</p>
+
+  <p id="total">Total : 0 €</p>
+  <script src="script.js"></script>
+</body>
+</html>
