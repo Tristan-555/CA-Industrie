@@ -42,7 +42,7 @@ document.getElementById("payer").addEventListener("click", () => {
   };
 
   // On envoie le panier au backend Stripe
-  fetch("http://127.0.0.1:5000/create-checkout-session", {
+  fetch("https://backend-ca-3v8m.onrender.com/create-checkout-session", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
