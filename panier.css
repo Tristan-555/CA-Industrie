@@ -1,29 +1,123 @@
+/* =========================================
+   1. CODE EXISTANT
+   ========================================= */
+
 body {
   font-family: system-ui, Arial, sans-serif;
-  max-width: 900px;
+  max-width: 800px; /* Plus étroit pour une lecture facile style "facture" */
   margin: 0 auto;
-  padding: 16px;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-.carte-produit {
-  border: 1px solid #ddd;
+/* =========================================
+   2. NOUVEAU CODE (Design Commercial)
+   ========================================= */
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+/* --- CONTENEUR DU RÉCAPITULATIF --- */
+
+/* Le div qui contient les h2 et les span d'articles (dans le HTML il n'a pas de classe, c'est le premier div) */
+body > div {
+  background: white;
+  padding: 30px;
   border-radius: 12px;
-  padding: 16px;
-  margin-top: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-.carte-produit img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 8px;
+/* Titre "Votre panier est vide" ou "X articles" */
+h2 span#Ctotalpanier {
+  display: block; /* Force le retour à la ligne */
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
-button {
-  padding: 8px 12px;
-  border: none;
+/* Le Montant Total - Très gros et visible */
+h2:nth-of-type(2) {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  background-color: #eaf2f8;
+  padding: 15px;
   border-radius: 8px;
-  cursor: pointer;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#PrixTotPanier {
+  color: #e67e22; /* Orange commercial */
+  font-weight: 800;
+}
+
+/* Liste des articles */
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Transformer les span vides en liste propre */
+#article0, #article1, #article2 {
+  display: block;
+  border-bottom: 1px dashed #ddd;
+  padding: 10px 0;
+  font-weight: 500;
+}
+/* Si le span est vide, on le cache pour ne pas avoir de traits vides */
+#article0:empty, #article1:empty, #article2:empty {
+  display: none;
+}
+
+/* --- BOUTONS D'ACTION BAS DE PAGE --- */
+
+/* Bouton Réinitialiser (Style "Danger" léger) */
+#reset-panier {
+  background-color: transparent;
+  color: #7f8c8d;
+  text-decoration: underline;
+  border: none;
+  margin-top: 20px;
+  display: block;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reset-panier:hover {
+  color: #c0392b;
+}
+
+/* Lien Retour Boutique */
+a[href="index.html"] {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* Bouton PAYER (Le CTA principal) */
+#payer {
+  display: block;
+  width: 100%;
+  background-color: #27ae60; /* Vert validation */
+  color: white;
+  font-size: 1.3rem;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 50px; /* Bouton arrondi */
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+  transition: transform 0.2s;
+  border: none;
+}
+
+#payer:hover {
+  background-color: #2ecc71;
+  transform: scale(1.02); /* Grossit un peu au survol */
 }
