@@ -36,3 +36,13 @@ button {
   text-decoration: underline;
   font-weight: bold; /* optionnel pour rendre le texte plus visible */
 }
+
+.logo {
+  height: 100px;
+  width: 130px;
+  background: url(./image/LogoCA.png) center/cover;
+  position: absolute;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+}
