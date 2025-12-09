@@ -4,15 +4,19 @@
 
 body {
   font-family: system-ui, Arial, sans-serif;
-  max-width: 1200px; /* J'ai élargi le site pour faire tenir 3 produits cote à cote */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 16px;
-  /* Ajout pour gérer la mise en page sans changer le HTML */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  background-color: #f8f9fa; /* Fond gris très clair pour faire ressortir les cartes blanches */
+
+  background-image: url('image/fondecran.png');/* 1. On met le chemin de l'image */ 
+  background-size: cover;/* 2. On s'assure qu'elle couvre tout l'écran sans se déformer */
+  background-attachment: fixed;/* 3. On la fige pour créer un effet sympa quand on scrolle (l'image ne bouge pas) */
+  background-position: center; /* 4. On la centre */
+  background-repeat: no-repeat;/* 5. On évite qu'elle se répète comme du carrelage */
 }
 
 /* =========================================
