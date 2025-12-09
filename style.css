@@ -80,23 +80,55 @@ h1 {
 
 /* --- EN-TÊTE & NAVIGATION --- */
 
-/* Style du lien Panier pour qu'il ressemble à un bouton ou une barre d'info */
+/* --- CORRECTION DÉFINITIVE DU PANIER --- */
+
+/* 1. Le conteneur invisible qui force le retour à la ligne */
 #panier {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  position: sticky; /* Le panier reste visible quand on scroll */
+  width: 100%;              /* Prend toute la largeur : force le passage à la ligne */
+  text-align: center;       /* Centre le bouton à l'intérieur */
+  margin: 20px 0;           /* Un peu d'espace haut/bas */
+  position: sticky;         /* Reste collé en haut si on scrolle */
   top: 10px;
   z-index: 100;
-  margin-bottom: 20px;
+  
+  /* On enlève le cadre d'ici pour le mettre sur le lien 'a' plus bas */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
+/* 2. Le lien qui devient le "Bouton" visible */
 #panier a {
-  text-decoration: none;
+  display: inline-flex;     /* S'adapte à la taille du texte + image */
+  align-items: center;      /* Centre verticalement image et texte */
+  justify-content: center;
+  gap: 10px;
+  
+  /* C'est ICI qu'on met le design "joli cadre" */
+  background-color: #ffffff;
   color: #2c3e50;
+  text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
+  
+  border: 1px solid #e1e4e8;
+  border-radius: 50px;
+  padding: 10px 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#panier a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* 3. L'image (logo caddie) */
+.icone-panier {
+  width: 40px;       /* Petite taille fixe */
+  height: auto;
+  display: block;
 }
 
 /* --- CARTES PRODUITS (Le cœur du design) --- */
