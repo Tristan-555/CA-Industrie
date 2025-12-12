@@ -19,7 +19,7 @@ let compteur_casquette= parseInt(localStorage.getItem("compteur_casquette"))|| 0
 let compteur_chaise = parseInt(localStorage.getItem("compteur_chaise")) || 0; 
 let compteur_tapis = parseInt(localStorage.getItem("compteur_tapis")) || 0; 
 let compteur_table = parseInt(localStorage.getItem("compteur_table")) || 0; 
-let compteur_etagere = parseInt(localStorage.getItem("compteur_etagere")) || 0; // Sans accent
+let compteur_etagere = parseInt(localStorage.getItem("compteur_etagere")) || 0; 
 let compteur_canape = parseInt(localStorage.getItem("compteur_canape")) || 0; 
 let compteur_fauteuil = parseInt(localStorage.getItem("compteur_fauteuil")) || 0; 
 
