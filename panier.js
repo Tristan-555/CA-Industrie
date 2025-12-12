@@ -25,6 +25,14 @@ let compteur_etagere_cuisine = parseInt(localStorage.getItem("compteur_etagere_c
 let compteur_table_cuisine = parseInt(localStorage.getItem("compteur_table_cuisine")) || 0; 
 let compteur_frigo = parseInt(localStorage.getItem("compteur_frigo")) || 0; 
 let compteur_chaise_cuisine = parseInt(localStorage.getItem("compteur_chaise_cuisine")) || 0;
+let compteur_lit = parseInt(localStorage.getItem("compteur_lit")) || 0; 
+let compteur_tapis_chambre = parseInt(localStorage.getItem("compteur_tapis_chambre")) || 0; 
+let compteur_bureau = parseInt(localStorage.getItem("compteur_bureau")) || 0; 
+let compteur_etagere_chambre = parseInt(localStorage.getItem("compteur_etagere_chambre")) || 0; 
+let compteur_chaise_chambre = parseInt(localStorage.getItem("compteur_chaise_chambre")) || 0; 
+let compteur_lavabo_salledebain = parseInt(localStorage.getItem("compteur_lavabo_salledebain")) || 0; 
+let compteur_toilette = parseInt(localStorage.getItem("compteur_toilette")) || 0; 
+let compteur_douche = parseInt(localStorage.getItem("compteur_douche")) || 0;
 
 const Ctotalpanier = document.getElementById("Ctotalpanier");
 const Affichageduprixtotal = document.getElementById("PrixTotPanier");
@@ -47,6 +55,14 @@ const AffichageArticle10 = document.getElementById("article10")
 const AffichageArticle11 = document.getElementById("article11")
 const AffichageArticle12 = document.getElementById("article12")
 const AffichageArticle13 = document.getElementById("article13")
+const AffichageArticle14 = document.getElementById("article14")
+const AffichageArticle15 = document.getElementById("article15")
+const AffichageArticle16 = document.getElementById("article16")
+const AffichageArticle17 = document.getElementById("article17")
+const AffichageArticle18 = document.getElementById("article18")
+const AffichageArticle19 = document.getElementById("article19")
+const AffichageArticle20 = document.getElementById("article20")
+const AffichageArticle21 = document.getElementById("article21")
 
 if (prixpanier > 0){
   Ctotalpanier.textContent ="vous avez selectionné " + Ctotal + " articles au total";
@@ -99,28 +115,54 @@ if (compteur_frigo > 0){
 if (compteur_chaise_cuisine > 0){
   AffichageArticle13.textContent = "x"+ compteur_chaise_cuisine + " Chaise (Cuisine)"
 }
+if (compteur_lit > 0){
+  AffichageArticle14.textContent = "x"+ compteur_lit + " Lit"
+}
+if (compteur_tapis_chambre > 0){
+  AffichageArticle15.textContent = "x"+ compteur_tapis_chambre + " Tapis (Chambre)"
+}
+if (compteur_bureau > 0){
+  AffichageArticle16.textContent = "x"+ compteur_bureau + " Bureau"
+}
+if (compteur_etagere_chambre > 0){
+  AffichageArticle17.textContent = "x"+ compteur_etagere_chambre + " Étagère (Chambre)"
+}
+if (compteur_chaise_chambre > 0){
+  AffichageArticle18.textContent = "x"+ compteur_chaise_chambre + " Chaise (Chambre)"
+}
+// Affichage des nouveaux produits (Groupe 4 - Salle de bain)
+if (compteur_lavabo_salledebain > 0){
+  AffichageArticle19.textContent = "x"+ compteur_lavabo_salledebain + " Lavabo (Salle de bain)"
+}
+if (compteur_toilette > 0){
+  AffichageArticle20.textContent = "x"+ compteur_toilette + " Toilette"
+}
+if (compteur_douche > 0){
+  AffichageArticle21.textContent = "x"+ compteur_douche + " Douche"
+}
 
 
 document.getElementById("payer").addEventListener("click", () => {
   // On récupère le panier depuis localStorage
   const panier = {
-    // Anciens produits
-    Tshirt_Cool: parseInt(localStorage.getItem("compteur_Tshirt_Cool")) || 0,
-    chaussette_foh: parseInt(localStorage.getItem("compteur_chaussettedufoh")) || 0,
-    casquette: parseInt(localStorage.getItem("compteur_casquette")) || 0,
-    // Produits Groupe 1
-    chaise: parseInt(localStorage.getItem("compteur_chaise")) || 0,
-    tapis: parseInt(localStorage.getItem("compteur_tapis")) || 0,
-    table: parseInt(localStorage.getItem("compteur_table")) || 0,
-    etagere: parseInt(localStorage.getItem("compteur_etagere")) || 0,
-    canape: parseInt(localStorage.getItem("compteur_canape")) || 0,
+    // Lignes 93-101 (produits existants) ...
     fauteuil: parseInt(localStorage.getItem("compteur_fauteuil")) || 0,
-    // Produits Groupe 2 (NÉCESSAIRE pour le backend)
+    // Produits Groupe 2
     lavabo: parseInt(localStorage.getItem("compteur_lavabo")) || 0,
     etagere_cuisine: parseInt(localStorage.getItem("compteur_etagere_cuisine")) || 0,
     table_cuisine: parseInt(localStorage.getItem("compteur_table_cuisine")) || 0,
     frigo: parseInt(localStorage.getItem("compteur_frigo")) || 0,
-    chaise_cuisine: parseInt(localStorage.getItem("compteur_chaise_cuisine")) || 0
+    chaise_cuisine: parseInt(localStorage.getItem("compteur_chaise_cuisine")) || 0,
+    // Produits Groupe 3 (Chambre)
+    lit: parseInt(localStorage.getItem("compteur_lit")) || 0,
+    tapis_chambre: parseInt(localStorage.getItem("compteur_tapis_chambre")) || 0,
+    bureau: parseInt(localStorage.getItem("compteur_bureau")) || 0,
+    etagere_chambre: parseInt(localStorage.getItem("compteur_etagere_chambre")) || 0,
+    chaise_chambre: parseInt(localStorage.getItem("compteur_chaise_chambre")) || 0,
+    // Produits Groupe 4 (Salle de bain)
+    lavabo_salledebain: parseInt(localStorage.getItem("compteur_lavabo_salledebain")) || 0,
+    toilette: parseInt(localStorage.getItem("compteur_toilette")) || 0,
+    douche: parseInt(localStorage.getItem("compteur_douche")) || 0,
   };
 
   // On envoie le panier au backend Stripe

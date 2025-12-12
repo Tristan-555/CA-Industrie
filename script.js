@@ -16,7 +16,17 @@ const productConfig = {
     "Étagère Cuisine": { key: "compteur_etagere_cuisine", id: "compteur_etagere_cuisine" },
     "Table Cuisine": { key: "compteur_table_cuisine", id: "compteur_table_cuisine" },
     "Frigo": { key: "compteur_frigo", id: "compteur_frigo" },
-    "Chaise Cuisine": { key: "compteur_chaise_cuisine", id: "compteur_chaise_cuisine" }
+    "Chaise Cuisine": { key: "compteur_chaise_cuisine", id: "compteur_chaise_cuisine" },
+    // Nouveaux produits pour groupe3.html (Chambre)
+    "Lit": { key: "compteur_lit", id: "compteur_lit" },
+    "Tapis Chambre": { key: "compteur_tapis_chambre", id: "compteur_tapis_chambre" },
+    "Bureau": { key: "compteur_bureau", id: "compteur_bureau" },
+    "Étagère Chambre": { key: "compteur_etagere_chambre", id: "compteur_etagere_chambre" },
+    "Chaise Chambre": { key: "compteur_chaise_chambre", id: "compteur_chaise_chambre" },
+    // Nouveaux produits pour groupe4.html (Salle de bain)
+    "Lavabo Salle de bain": { key: "compteur_lavabo_salledebain", id: "compteur_lavabo_salledebain" },
+    "Toilette": { key: "compteur_toilette", id: "compteur_toilette" },
+    "Douche": { key: "compteur_douche", id: "compteur_douche" }
 };
 
 // Récupérer les éléments HTML globaux
