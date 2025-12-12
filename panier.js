@@ -10,19 +10,21 @@ document.getElementById("reset-panier").addEventListener("click", function() {
 let Ctotal = parseInt(localStorage.getItem("Ctotal")) || 0;
 let prixpanier = parseFloat(localStorage.getItem("prixPanier")) || 0; 
 
-// Anciens produits
+// produits
 let compteur_Tshirt_Cool= parseInt(localStorage.getItem("compteur_Tshirt_Cool"))|| 0; 
 let compteur_chaussettedufoh = parseInt(localStorage.getItem("compteur_chaussettedufoh"))|| 0; 
 let compteur_casquette= parseInt(localStorage.getItem("compteur_casquette"))|| 0; 
-
-// Nouveaux produits
 let compteur_chaise = parseInt(localStorage.getItem("compteur_chaise")) || 0; 
 let compteur_tapis = parseInt(localStorage.getItem("compteur_tapis")) || 0; 
 let compteur_table = parseInt(localStorage.getItem("compteur_table")) || 0; 
 let compteur_etagere = parseInt(localStorage.getItem("compteur_etagere")) || 0; 
 let compteur_canape = parseInt(localStorage.getItem("compteur_canape")) || 0; 
 let compteur_fauteuil = parseInt(localStorage.getItem("compteur_fauteuil")) || 0; 
-
+let compteur_lavabo = parseInt(localStorage.getItem("compteur_lavabo")) || 0; 
+let compteur_etagere_cuisine = parseInt(localStorage.getItem("compteur_etagere_cuisine")) || 0; 
+let compteur_table_cuisine = parseInt(localStorage.getItem("compteur_table_cuisine")) || 0; 
+let compteur_frigo = parseInt(localStorage.getItem("compteur_frigo")) || 0; 
+let compteur_chaise_cuisine = parseInt(localStorage.getItem("compteur_chaise_cuisine")) || 0;
 
 const Ctotalpanier = document.getElementById("Ctotalpanier");
 const Affichageduprixtotal = document.getElementById("PrixTotPanier");
@@ -40,7 +42,11 @@ const AffichageArticle5 = document.getElementById("article5")
 const AffichageArticle6 = document.getElementById("article6")
 const AffichageArticle7 = document.getElementById("article7")
 const AffichageArticle8 = document.getElementById("article8")
-
+const AffichageArticle9 = document.getElementById("article9")
+const AffichageArticle10 = document.getElementById("article10")
+const AffichageArticle11 = document.getElementById("article11")
+const AffichageArticle12 = document.getElementById("article12")
+const AffichageArticle13 = document.getElementById("article13")
 
 if (prixpanier > 0){
   Ctotalpanier.textContent ="vous avez selectionné " + Ctotal + " articles au total";
@@ -78,6 +84,21 @@ if (compteur_canape>0){
 if (compteur_fauteuil>0){
   AffichageArticle8.textContent = "x"+ compteur_fauteuil + " Fauteuil"
 }
+if (compteur_lavabo > 0){
+  AffichageArticle9.textContent = "x"+ compteur_lavabo + " Lavabo"
+}
+if (compteur_etagere_cuisine > 0){
+  AffichageArticle10.textContent = "x"+ compteur_etagere_cuisine + " Étagère (Cuisine)"
+}
+if (compteur_table_cuisine > 0){
+  AffichageArticle11.textContent = "x"+ compteur_table_cuisine + " Table (Cuisine)"
+}
+if (compteur_frigo > 0){
+  AffichageArticle12.textContent = "x"+ compteur_frigo + " Frigo"
+}
+if (compteur_chaise_cuisine > 0){
+  AffichageArticle13.textContent = "x"+ compteur_chaise_cuisine + " Chaise (Cuisine)"
+}
 
 
 document.getElementById("payer").addEventListener("click", () => {
@@ -87,13 +108,19 @@ document.getElementById("payer").addEventListener("click", () => {
     Tshirt_Cool: parseInt(localStorage.getItem("compteur_Tshirt_Cool")) || 0,
     chaussette_foh: parseInt(localStorage.getItem("compteur_chaussettedufoh")) || 0,
     casquette: parseInt(localStorage.getItem("compteur_casquette")) || 0,
-    // Nouveaux produits pour le backend (NÉCESSAIRE)
+    // Produits Groupe 1
     chaise: parseInt(localStorage.getItem("compteur_chaise")) || 0,
     tapis: parseInt(localStorage.getItem("compteur_tapis")) || 0,
     table: parseInt(localStorage.getItem("compteur_table")) || 0,
     etagere: parseInt(localStorage.getItem("compteur_etagere")) || 0,
     canape: parseInt(localStorage.getItem("compteur_canape")) || 0,
-    fauteuil: parseInt(localStorage.getItem("compteur_fauteuil")) || 0
+    fauteuil: parseInt(localStorage.getItem("compteur_fauteuil")) || 0,
+    // Produits Groupe 2 (NÉCESSAIRE pour le backend)
+    lavabo: parseInt(localStorage.getItem("compteur_lavabo")) || 0,
+    etagere_cuisine: parseInt(localStorage.getItem("compteur_etagere_cuisine")) || 0,
+    table_cuisine: parseInt(localStorage.getItem("compteur_table_cuisine")) || 0,
+    frigo: parseInt(localStorage.getItem("compteur_frigo")) || 0,
+    chaise_cuisine: parseInt(localStorage.getItem("compteur_chaise_cuisine")) || 0
   };
 
   // On envoie le panier au backend Stripe

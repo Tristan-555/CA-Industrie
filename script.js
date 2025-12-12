@@ -10,7 +10,13 @@ const productConfig = {
     "Table": { key: "compteur_table", id: "compteur_table" },
     "Étagère": { key: "compteur_etagere", id: "compteur_etagere" }, // Utilisation de 'etagere' sans accent pour la clé localStorage
     "Canapé": { key: "compteur_canape", id: "compteur_canape" },
-    "Fauteuil": { key: "compteur_fauteuil", id: "compteur_fauteuil" }
+    "Fauteuil": { key: "compteur_fauteuil", id: "compteur_fauteuil" },
+    // Nouveaux produits pour groupe2.html
+    "Lavabo": { key: "compteur_lavabo", id: "compteur_lavabo" },
+    "Étagère Cuisine": { key: "compteur_etagere_cuisine", id: "compteur_etagere_cuisine" },
+    "Table Cuisine": { key: "compteur_table_cuisine", id: "compteur_table_cuisine" },
+    "Frigo": { key: "compteur_frigo", id: "compteur_frigo" },
+    "Chaise Cuisine": { key: "compteur_chaise_cuisine", id: "compteur_chaise_cuisine" }
 };
 
 // Récupérer les éléments HTML globaux
