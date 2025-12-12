@@ -35,7 +35,7 @@ body {
   margin: 0;
 
   /* 3. L'IMAGE (C'est la ligne qui manquait !) */
-  background-image: url('./image/LogoCA.png');
+  background-image: url('./image/LogoCA2.png');
 
   /* 4. Affichage pour voir le logo en entier */
   background-size: contain;      /* Force l'image à entrer dans le cadre sans être coupée */

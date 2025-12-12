@@ -12,6 +12,9 @@ let prixpanier = parseFloat(localStorage.getItem("prixPanier")) || 0;
 let compteur_Tshirt_Cool= parseInt(localStorage.getItem("compteur_Tshirt_Cool"))|| 0; 
 let compteur_chaussettedufoh = parseInt(localStorage.getItem("compteur_chaussettedufoh"))|| 0; 
 let compteur_casquette= parseInt(localStorage.getItem("compteur_casquette"))|| 0; 
+
+if (prixpanier < 0) { prixpanier = 0; }
+
 // Afficher les valeurs sauvegardées au chargement
 prixtotal.textContent = "Total : " + prixpanier.toFixed(2) + " €";
 totalaffichage.textContent = Ctotal;
@@ -64,6 +67,9 @@ boutonsAjouter[1].addEventListener("click",function(){
     // on s'occupe d'afficher le bon prix total du panier
     const prix = parseFloat(this.getAttribute("data-price"));
     prixpanier += prix;
+    if (prixpanier <= 0) { 
+          prixpanier = 0; 
+      }
     prixtotal.textContent ="Total : " + prixpanier.toFixed(2) + " €"
     // Sauvegarder dans localStorage
     localStorage.setItem("prixPanier", prixpanier);
