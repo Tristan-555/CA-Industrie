@@ -1,137 +1,93 @@
-// Récupérer les éléments HTML
-const lienPanier = document.getElementById('lien-panier');
+// Configuration de tous les produits (Anciens + Nouveaux)
+const productConfig = {
+    // Produits existants dans index.html
+    "T-shirt Cool": { key: "compteur_Tshirt_Cool", id: "compteur_Tshirt_Cool" },
+    "chaussette de fockoffeur": { key: "compteur_chaussettedufoh", id: "compteur_chaussettedufoh" },
+    "casquette": { key: "compteur_casquette", id: "compteur_casquette" },
+    // Nouveaux produits pour groupe1.html
+    "Chaise": { key: "compteur_chaise", id: "compteur_chaise" },
+    "Tapis": { key: "compteur_tapis", id: "compteur_tapis" },
+    "Table": { key: "compteur_table", id: "compteur_table" },
+    "Étagère": { key: "compteur_etagere", id: "compteur_etagere" }, // Utilisation de 'etagere' sans accent pour la clé localStorage
+    "Canapé": { key: "compteur_canape", id: "compteur_canape" },
+    "Fauteuil": { key: "compteur_fauteuil", id: "compteur_fauteuil" }
+};
+
+// Récupérer les éléments HTML globaux
 const prixtotal = document.getElementById('total');
+const totalaffichage = document.getElementById('Ctotalart');
 const boutonsAjouter = document.querySelectorAll('.ajouter');
 const boutonsRetirer = document.querySelectorAll('.retirer');
-const totalaffichage = document.getElementById('Ctotalart');
-const affichage_compteur_Tshirt_Cool  = document.getElementById('compteur_Tshirt_Cool')
-const affichage_chaussettedufoh = document.getElementById('compteur_chaussettedufoh')
-const affichage_casquette = document.getElementById('compteur_casquette')
+
+// Récupérer les valeurs globales sauvegardées
 let Ctotal = parseInt(localStorage.getItem("Ctotal")) || 0;
 let prixpanier = parseFloat(localStorage.getItem("prixPanier")) || 0; 
-let compteur_Tshirt_Cool= parseInt(localStorage.getItem("compteur_Tshirt_Cool"))|| 0; 
-let compteur_chaussettedufoh = parseInt(localStorage.getItem("compteur_chaussettedufoh"))|| 0; 
-let compteur_casquette= parseInt(localStorage.getItem("compteur_casquette"))|| 0; 
-
 if (prixpanier < 0) { prixpanier = 0; }
 
-// Afficher les valeurs sauvegardées au chargement
+// Fonction générique pour la mise à jour des compteurs (article + panier)
+function updatePanier(productName, priceChange, isAdd) {
+    const config = productConfig[productName];
+    if (!config) return;
+
+    let compteur = parseInt(localStorage.getItem(config.key)) || 0;
+    
+    // Logique d'ajout/retrait
+    if (isAdd) {
+        compteur++;
+        Ctotal++;
+        prixpanier += priceChange;
+    } else if (compteur > 0) {
+        compteur--;
+        Ctotal--;
+        prixpanier += priceChange; // priceChange est négatif pour un retrait
+    }
+
+    // Mise à jour de l'affichage local (sur la page produit actuelle)
+    const affichageCompteur = document.getElementById(config.id);
+    if (affichageCompteur) {
+        affichageCompteur.textContent = compteur;
+    }
+
+    // Correction du prix si jamais il devient négatif par erreur
+    if (prixpanier < 0) { prixpanier = 0; }
+    
+    // Mise à jour de l'affichage global du panier
+    totalaffichage.textContent = Ctotal;
+    prixtotal.textContent ="Total : " + prixpanier.toFixed(2) + " €";
+    
+    // Sauvegarder dans localStorage
+    localStorage.setItem(config.key, compteur);
+    localStorage.setItem("prixPanier", prixpanier);
+    localStorage.setItem("Ctotal", Ctotal);
+}
+
+// 1. Initialisation des compteurs et affichage au chargement (pour le panier global)
 prixtotal.textContent = "Total : " + prixpanier.toFixed(2) + " €";
 totalaffichage.textContent = Ctotal;
-affichage_compteur_Tshirt_Cool.textContent = compteur_Tshirt_Cool
-affichage_chaussettedufoh.textContent = compteur_chaussettedufoh
-affichage_casquette.textContent = compteur_casquette
 
-// bouton ajouter au panier pour le Tshirt Cool
-boutonsAjouter[0].addEventListener("click",function(){
-    compteur_Tshirt_Cool++;
-    affichage_compteur_Tshirt_Cool.textContent = compteur_Tshirt_Cool;
-    // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-    Ctotal++           
-    totalaffichage.textContent = Ctotal;
-    // on s'occupe d'afficher le bon prix total du panier
-    const prix = parseFloat(this.getAttribute("data-price"));
-    prixpanier += prix;
-    prixtotal.textContent ="Total : " + prixpanier.toFixed(2) + " €"
-    // Sauvegarder dans localStorage
-    localStorage.setItem("prixPanier", prixpanier);
-    localStorage.setItem("Ctotal", Ctotal);
-    localStorage.setItem("compteur_Tshirt_Cool", compteur_Tshirt_Cool);
-})
-// bouton retirer au panier le Tshirt Cool
-boutonsRetirer[0].addEventListener("click",function(){
-    if (compteur_Tshirt_Cool > 0) {
-      compteur_Tshirt_Cool--;
-      affichage_compteur_Tshirt_Cool.textContent = compteur_Tshirt_Cool;
-      // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-      Ctotal--
-      totalaffichage.textContent = Ctotal;
-      // on s'occupe d'afficher le bon prix total du panier
-      const prix = parseFloat(this.getAttribute("data-price"));
-      prixpanier += prix;
-      prixtotal.textContent = "Total : " + prixpanier.toFixed(2) + " €"
-      // Sauvegarder dans localStorage
-      localStorage.setItem("prixPanier", prixpanier);
-      localStorage.setItem("Ctotal", Ctotal);
-      localStorage.setItem("compteur_Tshirt_Cool", compteur_Tshirt_Cool);
+// 2. Afficher les compteurs spécifiques pour les produits PRÉSENTS sur la page
+for (const name in productConfig) {
+    const config = productConfig[name];
+    const affichageCompteur = document.getElementById(config.id);
+    if (affichageCompteur) {
+        let compteur = parseInt(localStorage.getItem(config.key)) || 0;
+        affichageCompteur.textContent = compteur;
     }
-})
+}
 
-// bouton ajouter au panier pour les chaussettes de foh
-boutonsAjouter[1].addEventListener("click",function(){
-    compteur_chaussettedufoh++;
-    affichage_chaussettedufoh.textContent = compteur_chaussettedufoh;
-    // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-    Ctotal++           
-    totalaffichage.textContent = Ctotal;
-    // on s'occupe d'afficher le bon prix total du panier
-    const prix = parseFloat(this.getAttribute("data-price"));
-    prixpanier += prix;
-    if (prixpanier <= 0) { 
-          prixpanier = 0; 
-      }
-    prixtotal.textContent ="Total : " + prixpanier.toFixed(2) + " €"
-    // Sauvegarder dans localStorage
-    localStorage.setItem("prixPanier", prixpanier);
-    localStorage.setItem("Ctotal", Ctotal);
-    localStorage.setItem("compteur_chaussettedufoh", compteur_chaussettedufoh);
-})
-// bouton retirer au panier les chaussettes de foh
-boutonsRetirer[1].addEventListener("click",function(){
-    if (compteur_chaussettedufoh > 0) {
-      compteur_chaussettedufoh--;
-      affichage_chaussettedufoh.textContent = compteur_chaussettedufoh;
-      // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-      Ctotal--
-      totalaffichage.textContent = Ctotal;
-      // on s'occupe d'afficher le bon prix total du panier
-      const prix = parseFloat(this.getAttribute("data-price"));
-      prixpanier += prix;
-      prixtotal.textContent = "Total : " + prixpanier.toFixed(2) + " €"
-      // Sauvegarder dans localStorage
-      localStorage.setItem("prixPanier", prixpanier);
-      localStorage.setItem("Ctotal", Ctotal);
-      localStorage.setItem("compteur_chaussettedufoh", compteur_chaussettedufoh);
-    }
-})
+// 3. Ajout des écouteurs d'événements (plus besoin d'indices !)
+boutonsAjouter.forEach(button => {
+    button.addEventListener("click", function() {
+        const name = this.getAttribute("data-name");
+        const price = parseFloat(this.getAttribute("data-price"));
+        updatePanier(name, price, true); // true = isAdd
+    });
+});
 
-
-// bouton ajouter au panier pour les casquettes
-boutonsAjouter[2].addEventListener("click",function(){
-    compteur_casquette++;
-    affichage_casquette.textContent = compteur_casquette;
-    // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-    Ctotal++           
-    totalaffichage.textContent = Ctotal;
-    // on s'occupe d'afficher le bon prix total du panier
-    const prix = parseFloat(this.getAttribute("data-price"));
-    prixpanier += prix;
-    prixtotal.textContent ="Total : " + prixpanier.toFixed(2) + " €"
-    // Sauvegarder dans localStorage
-    localStorage.setItem("prixPanier", prixpanier);
-    localStorage.setItem("Ctotal", Ctotal);
-    localStorage.setItem("compteur_casquette", compteur_casquette);
-})
-// bouton retirer au panier les casquettes
-boutonsRetirer[2].addEventListener("click",function(){
-    if (compteur_casquette > 0) {
-      compteur_casquette--;
-      affichage_casquette.textContent = compteur_casquette;
-      // ici on s'occupe de l'affichage du panier, plus précisémment le nombre d'article total du panier
-      Ctotal--
-      totalaffichage.textContent = Ctotal;
-      // on s'occupe d'afficher le bon prix total du panier
-      const prix = parseFloat(this.getAttribute("data-price"));
-      prixpanier += prix;
-      prixtotal.textContent = "Total : " + prixpanier.toFixed(2) + " €"
-      // Sauvegarder dans localStorage
-      localStorage.setItem("prixPanier", prixpanier);
-      localStorage.setItem("Ctotal", Ctotal);
-      localStorage.setItem("compteur_casquette", compteur_casquette);
-    }
-})
-
-
-
-
-
+boutonsRetirer.forEach(button => {
+    button.addEventListener("click", function() {
+        const name = this.getAttribute("data-name");
+        const price = parseFloat(this.getAttribute("data-price")); 
+        updatePanier(name, price, false); // false = isNotAdd (isRemove)
+    });
+});

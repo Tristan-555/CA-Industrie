@@ -63,15 +63,15 @@ p {
   line-height: 1.6;
 }
 
-/* Transformer les span vides en liste propre */
-#article0, #article1, #article2 {
+/* Transformer les span vides en liste propre (MIS À JOUR : ajout de article3 à article8) */
+#article0, #article1, #article2, #article3, #article4, #article5, #article6, #article7, #article8 {
   display: block;
   border-bottom: 1px dashed #ddd;
   padding: 10px 0;
   font-weight: 500;
 }
-/* Si le span est vide, on le cache pour ne pas avoir de traits vides */
-#article0:empty, #article1:empty, #article2:empty {
+/* Si le span est vide, on le cache pour ne pas avoir de traits vides (MIS À JOUR) */
+#article0:empty, #article1:empty, #article2:empty, #article3:empty, #article4:empty, #article5:empty, #article6:empty, #article7:empty, #article8:empty {
   display: none;
 }
 

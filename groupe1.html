@@ -19,11 +19,72 @@
   </div>
 
   <!-- liste des articles -->
-<div style="text-align: center; padding: 50px;">
-      <h2>Aucun article dans ce groupe pour le moment...</h2>
-      <p>Revenez plus tard !</p>
+<div class="logo"></div>
+  <h1>Catégorie : Salon</h1> 
+  <div class="menu-categories">
+    <a href="index.html">Accueil</a> <a href="groupe1.html" class="actif">Salon</a>
+    <a href="groupe2.html">Cuisine</a>
+    <a href="groupe3.html">Chambre</a>
+    <a href="groupe4.html">Salle de bain</a>
+    <a href="groupe5.html">Autre</a>
   </div>
-<!-- lien pour accéder au panier -->
+
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/4CAF50" alt="Chaise" />
+    <h2>Chaise</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Chaise">retirer du panier</button>
+    <h2><span id="compteur_chaise">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Chaise">Ajouter au panier</button>
+  </div>
+  
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/FFC107" alt="Tapis" />
+    <h2>Tapis</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Tapis">retirer du panier</button>
+    <h2><span id="compteur_tapis">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Tapis">Ajouter au panier</button>
+  </div>
+
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/2196F3" alt="Table" />
+    <h2>Table</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Table">retirer du panier</button>
+    <h2><span id="compteur_table">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Table">Ajouter au panier</button>
+  </div>
+
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/9C27B0" alt="Étagère" />
+    <h2>Étagère</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Étagère">retirer du panier</button>
+    <h2><span id="compteur_etagere">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Étagère">Ajouter au panier</button>
+  </div>
+
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/FF5722" alt="Canapé" />
+    <h2>Canapé</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Canapé">retirer du panier</button>
+    <h2><span id="compteur_canape">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Canapé">Ajouter au panier</button>
+  </div>
+  
+  <div class="carte-produit">
+    <img src="https://via.placeholder.com/200/607D8B" alt="Fauteuil" />
+    <h2>Fauteuil</h2>
+    <p>Prix à l'unité: 1,00 €</p>
+    <button class="retirer" data-price="-1.00" data-name="Fauteuil">retirer du panier</button>
+    <h2><span id="compteur_fauteuil">0</span></h2>
+    <button class="ajouter" data-price="1.00" data-name="Fauteuil">Ajouter au panier</button>
+  </div>
+
+
+  <!-- lien pour accéder au panier -->
 
 <p id="panier">
   <a id="lien-panier" href="panier.html">
@@ -31,7 +92,6 @@
     <span>Panier : <span id="Ctotalart"> 0 </span> article</span>
   </a>
  </p>
-
 
   <p id="total">Total : 0 €</p>
   <script src="script.js"></script>
